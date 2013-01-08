@@ -1,6 +1,10 @@
 ##PyRcmmndr
 Python Client for the Rcmmndr platform. It is using httplib2 for communicating with the server
 
+##Installation
+
+	pip install git+https://github.com/Rcmmndr/pyrcmmndr.git
+
 ###Creating a Client Instance
 
 	pyrcmmndr=RcmmndrClient("API_KEY")
