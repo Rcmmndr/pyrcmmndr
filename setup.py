@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 DESCRIPTION = "PyRcmmndr - Rcmmndr Rest Client for Python"
 
