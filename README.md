@@ -1,5 +1,5 @@
 ##PyRcmmndr
-Python Client for the Rcmmndr platform. It is using httplib2 for comminucating with the server
+Python Client for the Rcmmndr platform. It is using httplib2 for communicating with the server
 
 ###Creating a Client Instance
 
