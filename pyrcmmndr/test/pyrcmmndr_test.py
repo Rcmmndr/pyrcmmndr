@@ -11,8 +11,10 @@ class TestRcmmndrClient(unittest.TestCase):
         #initialize
         pyrcmmndr.delete_all_preferences()
 
-
+        #create some preferences
         pyrcmmndr.create_preference(1,101,1.0)
+
+        #check the stats
         stats=pyrcmmndr.get_usage_stats()
         assert stats['total_preferences'] == 1
         assert stats['distinct_keys'] == 1
@@ -34,7 +36,6 @@ class TestRcmmndrClient(unittest.TestCase):
         assert stats['total_preferences'] == 0
         assert stats['distinct_keys'] == 0
 
-        ###sample dataset from Mahout in Action
         pyrcmmndr.create_preference(1,101,5)
         pyrcmmndr.create_preference(1,102,3)
         pyrcmmndr.create_preference(1,103,2.5)
@@ -61,6 +62,7 @@ class TestRcmmndrClient(unittest.TestCase):
         pyrcmmndr.create_preference(5l,105l,3.5)
         pyrcmmndr.create_preference(5l,106l,4)
 
+        #get recommendations
         recs=pyrcmmndr.get_recommendation(1)
 
         assert '104' in recs
@@ -73,6 +75,7 @@ class TestRcmmndrClient(unittest.TestCase):
         assert stats['total_preferences'] == 0
         assert stats['distinct_keys'] == 0
 
+        #bulk update
         pyrcmmndr.bulk_update_preferences('preferences.tsv')
         stats=pyrcmmndr.get_usage_stats()
         assert stats['total_preferences'] == 22
