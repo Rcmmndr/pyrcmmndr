@@ -29,4 +29,5 @@ setup(name='pyrcmmndr',
       classifiers=CLASSIFIERS,
       install_requires=['httplib2'],
       version='0.0.1',
+      zip_safe=False
 )
