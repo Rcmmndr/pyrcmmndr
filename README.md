@@ -50,6 +50,39 @@ where the contents of preferences.tsv are similar to the following: (userID,item
 	244,51,2
 	166,346,1
 
+###Settings API
+Using the settings API, you can finetune your recommender and try different recommendation algorithms. Please refer to the Restful API documentation for detailed usage of the Settings API.
+
+####Getting Current Settings
+
+		pyrcmmndrClient.get_settings()
+	
+Returns the current settings as a dictionary.
+
+####Updating Settings
+	    rec = """
+        {
+             "recommender": {
+                  "impl":"GenericUserBasedRecommender",
+                  "params":{
+                       "UserSimilarity" : {
+                            "impl":"PearsonCorrelationSimilarity"
+                       },
+                       "UserNeighborhood":{
+                            "impl":"NearestNUserNeighborhood",
+                            "params": {
+                                 "n":2
+                            }
+                       }
+                  }
+             }
+        	}
+         """
+
+        pyrcmmndr.update_settings(json.loads(rec))
+
+
 ###Additional Notes
 You can also check the unit test which shows the basic usage scenario.
+
 
