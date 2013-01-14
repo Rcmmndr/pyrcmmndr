@@ -1,6 +1,7 @@
 
 import unittest
 from pyrcmmndr import RcmmndrClient
+import json
 
 __author__ = 'codemomentum'
 
@@ -66,6 +67,33 @@ class TestRcmmndrClient(unittest.TestCase):
         recs=pyrcmmndr.get_recommendation(1)
 
         assert '104' in recs
+
+        print pyrcmmndr.get_settings()
+
+        rec = """
+        {
+             "recommender": {
+                  "impl":"GenericUserBasedRecommender",
+                  "params":{
+                       "UserSimilarity" : {
+                            "impl":"PearsonCorrelationSimilarity"
+                       },
+                       "UserNeighborhood":{
+                            "impl":"NearestNUserNeighborhood",
+                            "params": {
+                                 "n":2
+                            }
+                       }
+                  }
+             }
+        	}
+         """
+
+        pyrcmmndr.update_settings(json.loads(rec))
+
+        print pyrcmmndr.get_settings()
+
+
 
     def test_bulk_update(self):
         pyrcmmndr=RcmmndrClient("123","http://localhost:3000")

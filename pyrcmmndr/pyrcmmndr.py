@@ -1,4 +1,5 @@
 from common import *
+import json
 
 __author__ = 'codemomentum'
 
@@ -28,3 +29,9 @@ class RcmmndrClient(object):
     def bulk_update_preferences(self,file):
         data = open(file).read()
         post_content( self.server_url + '/api_key/' + self.apiKey + '/preference/_bulk',data,request_headers = {'Content-Type': 'text/plain'})
+
+    def get_settings(self):
+        return get_content(self.server_url+'/api_key/'+self.apiKey+'/_settings')
+
+    def update_settings(self,settings_dict):
+        post_content(self.server_url+'/api_key/'+self.apiKey+'/_settings',json.dumps(settings_dict))
