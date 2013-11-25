@@ -136,39 +136,5 @@ class TestRcmmndrClient(unittest.TestCase):
         assert stats['distinct_keys'] == 21
 
 
-    def test_create_some_load(self):
-        pyrcmmndr = RcmmndrClient("0000000000000000000000000000000000000000001", "http://localhost:8001")
-        #initialize
-        pyrcmmndr.delete_all_preferences()
-
-        #create some preferences
-        for x in range(0, 1000):
-            pyrcmmndr.create_preference(x + 1, 101, 5)
-            pyrcmmndr.create_preference(x + 1, 102, 3)
-            pyrcmmndr.create_preference(x + 1, 103, 2.5)
-
-            pyrcmmndr.create_preference(x + 2l, 101l, 2)
-            pyrcmmndr.create_preference(x + 2l, 102l, 2.5)
-            pyrcmmndr.create_preference(x + 2l, 103l, 5)
-            pyrcmmndr.create_preference(x + 2l, 104l, 2)
-
-            pyrcmmndr.create_preference(x + 3l, 101l, 2.5)
-            pyrcmmndr.create_preference(x + 3l, 104l, 4)
-            pyrcmmndr.create_preference(x + 3l, 105l, 4.5)
-            pyrcmmndr.create_preference(x + 3l, 107l, 5)
-
-            pyrcmmndr.create_preference(x + 4l, 101l, 5)
-            pyrcmmndr.create_preference(x + 4l, 103l, 3)
-            pyrcmmndr.create_preference(x + 4l, 104l, 4.5)
-            pyrcmmndr.create_preference(x + 4l, 106l, 4)
-
-            pyrcmmndr.create_preference(x + 5l, 101l, 4)
-            pyrcmmndr.create_preference(x + 5l, 102l, 3)
-            pyrcmmndr.create_preference(x + 5l, 103l, 2)
-            pyrcmmndr.create_preference(x + 5l, 104l, 4)
-            pyrcmmndr.create_preference(x + 5l, 105l, 3.5)
-            pyrcmmndr.create_preference(x + 5l, 106l, 4)
-
-
 if __name__ == '__main__':
     unittest.main()
