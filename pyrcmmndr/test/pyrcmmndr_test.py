@@ -4,10 +4,12 @@ import json
 
 __author__ = 'codemomentum'
 
+API_KEY = "apikey"
+
 
 class TestRcmmndrClient(unittest.TestCase):
     def test_basic_flow(self):
-        pyrcmmndr = RcmmndrClient("0000000000000000000000000000000000000000001", "http://localhost:8001")
+        pyrcmmndr = RcmmndrClient(API_KEY)
         #initialize
         pyrcmmndr.delete_all_preferences()
 
@@ -68,6 +70,12 @@ class TestRcmmndrClient(unittest.TestCase):
 
         assert '104' in recs
 
+        popular = pyrcmmndr.get_most_popular_n_items(None, 2)
+        print popular
+        assert '101' in popular
+        assert '103' in popular
+        assert 2 == len(popular)
+
         print pyrcmmndr.get_settings()
 
         rec = """
@@ -121,8 +129,9 @@ class TestRcmmndrClient(unittest.TestCase):
 
         print pyrcmmndr.get_settings(datatype="type1")
 
+
     def test_bulk_update(self):
-        pyrcmmndr = RcmmndrClient("0000000000000000000000000000000000000000001", "http://localhost:8001")
+        pyrcmmndr = RcmmndrClient(API_KEY)
         #initialize
         pyrcmmndr.delete_all_preferences()
         stats = pyrcmmndr.get_usage_stats()
